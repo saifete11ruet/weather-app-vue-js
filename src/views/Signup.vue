@@ -69,6 +69,7 @@
                   class="mb-4"
                   color="primary"
                   :disabled="!name || !phone || !password || !valid"
+                  :loading="loading"
                   @click="signup"
                 >
                   Sign Up
@@ -88,6 +89,7 @@
     data: () => ({
       valid: true,
       show: false,
+      loading: false,
       alertSuccess: false,
       alertFailed: false,
       name: "",
@@ -112,11 +114,14 @@
     methods: {
       signup() {
         this.$refs.form.validate();
-        localStorage.setItem("name", this.name);
-        localStorage.setItem("phone", this.phone);
-        localStorage.setItem("data", [this.name, this.phone]);
-        this.alertSuccess = true;
-        this.$refs.form.reset();
+        if (this.valid) {
+          this.loading = true;
+          localStorage.setItem("name", this.name);
+          localStorage.setItem("phone", this.phone);
+          this.alertSuccess = true;
+          this.$refs.form.reset();
+          this.loading = false;
+        }
       },
     },
   };
