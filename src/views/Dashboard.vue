@@ -280,7 +280,7 @@
       showCityWeather() {
         if (this.city) {
           this.$refs.form.validate();
-          localStorage.setItem("lastSearchedCity", this.city); // saving city name for further use
+
           this.loading = true;
         }
         // Call api to get weather update for searched city or last searched city or default city
@@ -298,6 +298,7 @@
             this.alertFailed = false;
             this.weather = response.data;
             this.loading = false;
+            localStorage.setItem("lastSearchedCity", this.city); // saving city name for further use
           })
           .catch((error) => {
             this.alertFailed = true;
