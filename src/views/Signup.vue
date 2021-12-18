@@ -1,15 +1,14 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="signup">
     <v-main>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
             <v-card class="elevation-12 signup-card">
-              <!-- <v-toolbar dark color="primary">
-                <v-toolbar-title>Signup</v-toolbar-title>
-              </v-toolbar> -->
               <v-card-text>
                 <h2 class="signup-text">Sign Up</h2>
+
+                <!-- start alert box (success and error) -->
                 <v-alert
                   v-model="alertSuccess"
                   border="left"
@@ -30,6 +29,9 @@
                 >
                   Registration failed. Please try again
                 </v-alert>
+                <!-- end alert box -->
+
+                <!-- start signup form -->
                 <v-form ref="form" v-model="valid" lazy-validation>
                   <v-text-field
                     prepend-icon="mdi-account"
@@ -75,6 +77,7 @@
                   Sign Up
                 </v-btn>
               </v-card-actions>
+              <!-- end signup form -->
             </v-card>
           </v-flex>
         </v-layout>
@@ -128,7 +131,7 @@
 </script>
 
 <style scoped>
-  div#inspire {
+  div#signup {
     background-image: url("../assets/signup-bg.jpg");
     background-size: cover;
   }
@@ -138,7 +141,7 @@
     font-size: 34px;
   }
   .signup-card {
-    background-color: rgba(255, 255, 255, 0.6) !important;
+    background-color: rgba(255, 255, 255, 0.7) !important;
     padding: 12px;
   }
 </style>
